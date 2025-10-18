@@ -30,3 +30,36 @@ async function fetchProductsAsync() {
         handleError(error);
     }
 }
+
+// Step 5 displayProducts(products)
+
+function displayProducts(products) {
+    const container = document.getElementById('product-container');
+
+    const firstFive = products.slice(0,5);
+
+    firstFive.forEach(product => {
+        const {name, price, image} = product.fields;
+
+        const card = document.createElement('div');
+        card.classList.add('product-card');
+
+        card.innerHTML = 
+                    `<img src="${image[0].url}" alt="${name}">
+                    <h3>${name}</h3>
+                    <p>$${(price / 100).toFixed(2)}</p>`;
+
+                    container.appendChild(card);
+    })
+}
+
+// Step 6 Error handling
+
+function handleError(error) {
+    console.error(`Error Reported : ${error.message}`);
+}
+
+// Step 7 Images
+
+fetchProductsThen(); 
+fetchProductsAsync();
