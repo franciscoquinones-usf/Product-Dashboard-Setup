@@ -6,6 +6,7 @@ function fetchProductsThen() {
         if (!response.ok) {
             throw new Error(`Error reported: ${response.status}`);
         }
+        return response.json();
     })
     .then(data => {
         console.log("Products logged: ");
